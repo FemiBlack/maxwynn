@@ -47,14 +47,14 @@ export default async function Navbar() {
       <div className="flex justify-around w-full items-center">
         <Link
           href="/dashboard/tracks"
-          className="flex items-center gap-2 p-2 rounded-md mt-2"
+          className="flex items-center gap-2 p-2 rounded-md mt-2 hover:font-semibold"
         >
           <MusicalNoteIcon className="h-5 w-5" />
           Top Tracks
         </Link>
         <Link
           href="/dashboard/artists"
-          className="flex items-center gap-2 p-2 rounded-md mt-2"
+          className="flex items-center gap-2 p-2 rounded-md mt-2 hover:font-semibold"
         >
           <UsersIcon className="h-5 w-5" />
           Top Artists
