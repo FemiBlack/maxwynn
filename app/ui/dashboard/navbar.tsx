@@ -7,12 +7,13 @@ import {
   UsersIcon,
 } from "@heroicons/react/24/outline";
 import { MusicalNoteIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 export default async function Navbar() {
   const session = await auth();
 
   return (
-    <nav className="p-6 my-6 bg-zinc-100 rounded-lg flex flex-col items-center">
+    <nav className="p-6 bg-zinc-100 rounded-lg flex flex-col items-center">
       <Image
         src="/amw-logo.png"
         alt="AMW Logo"
@@ -44,14 +45,20 @@ export default async function Navbar() {
         </form>
       </div>
       <div className="flex justify-around w-full items-center">
-        <p className="flex items-center gap-2 p-2 rounded-md mt-2">
+        <Link
+          href="/dashboard/tracks"
+          className="flex items-center gap-2 p-2 rounded-md mt-2"
+        >
           <MusicalNoteIcon className="h-5 w-5" />
           Top Tracks
-        </p>
-        <p className="flex items-center gap-2 p-2 rounded-md mt-2">
+        </Link>
+        <Link
+          href="/dashboard/artists"
+          className="flex items-center gap-2 p-2 rounded-md mt-2"
+        >
           <UsersIcon className="h-5 w-5" />
           Top Artists
-        </p>
+        </Link>
         <p className="flex items-center gap-2 p-2 rounded-md mt-2">
           <GiftIcon className="h-5 w-5" />
           Recommendations
