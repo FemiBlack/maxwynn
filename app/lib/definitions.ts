@@ -56,3 +56,19 @@ export type AuthUser = {
   scope: string;
   id: string;
 };
+
+export type TimeRange = "short_term" | "medium_term" | "long_term";
+
+type Enumerate<
+  N extends number,
+  Acc extends number[] = []
+> = Acc["length"] extends N
+  ? Acc[number]
+  : Enumerate<N, [...Acc, Acc["length"]]>;
+
+type IntRange<F extends number, T extends number> = Exclude<
+  Enumerate<T>,
+  Enumerate<F>
+>;
+
+export type Limit = IntRange<0, 50>;

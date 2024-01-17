@@ -3,6 +3,7 @@
 import sdk from "./sdk";
 import { signIn } from "@/auth";
 import { AuthError } from "next-auth";
+import { Limit, TimeRange } from "./definitions";
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -38,12 +39,28 @@ export const getNowPlaying = async () => {
   });
 };
 
-export const getTopTracks = async () => {
-  return sdk.currentUser.topItems("tracks");
+export const getTopTracks = async ({
+  offset,
+  limit,
+  timeRange,
+}: {
+  offset?: number;
+  limit?: Limit;
+  timeRange?: TimeRange;
+}) => {
+  return sdk.currentUser.topItems("tracks", timeRange, limit, offset);
 };
 
-export const getTopArtists = async () => {
-  return sdk.currentUser.topItems("artists");
+export const getTopArtists = async ({
+  offset,
+  limit,
+  timeRange,
+}: {
+  offset?: number;
+  limit?: Limit;
+  timeRange?: TimeRange;
+}) => {
+  return sdk.currentUser.topItems("artists", timeRange, limit, offset);
 };
 
 export async function authenticate() {
