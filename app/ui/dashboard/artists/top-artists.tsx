@@ -1,6 +1,6 @@
 import { getTopArtists } from "@/app/lib/actions";
 import { TimeRange } from "@/app/lib/definitions";
-import Artist from "@/app/ui/dashboard/artist";
+import Artist from "@/app/ui/dashboard/artists/artist";
 
 export default async function TopArtists({
   timeRange,

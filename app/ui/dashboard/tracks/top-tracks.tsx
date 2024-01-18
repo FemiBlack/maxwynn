@@ -1,6 +1,6 @@
 import { getTopTracks } from "@/app/lib/actions";
 import { TimeRange } from "@/app/lib/definitions";
-import Track from "@/app/ui/dashboard/track";
+import Track from "@/app/ui/dashboard/tracks/track";
 
 export default async function TopTracks({
   timeRange,

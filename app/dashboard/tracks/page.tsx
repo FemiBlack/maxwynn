@@ -2,7 +2,7 @@ import { getTopTracks } from "@/app/lib/actions";
 import { TimeRange } from "@/app/lib/definitions";
 import Pagination from "@/app/ui/dashboard/pagination";
 import TimeRangeFilter from "@/app/ui/dashboard/time-range-filter";
-import TopTracks from "@/app/ui/dashboard/top-tracks";
+import TopTracks from "@/app/ui/dashboard/tracks/top-tracks";
 import { TrackCardsSkeleton } from "@/app/ui/skeleton";
 import { Suspense } from "react";
 

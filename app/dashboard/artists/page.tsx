@@ -2,7 +2,7 @@ import { getTopArtists } from "@/app/lib/actions";
 import { TimeRange } from "@/app/lib/definitions";
 import Pagination from "@/app/ui/dashboard/pagination";
 import TimeRangeFilter from "@/app/ui/dashboard/time-range-filter";
-import TopArtists from "@/app/ui/dashboard/top-artists";
+import TopArtists from "@/app/ui/dashboard/artists/top-artists";
 import { TrackCardsSkeleton } from "@/app/ui/skeleton";
 import { Suspense } from "react";
 
