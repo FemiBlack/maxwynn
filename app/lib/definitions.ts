@@ -1,3 +1,14 @@
+import {
+  Album,
+  Artist,
+  Audiobook,
+  Episode,
+  PartialSearchResult,
+  Playlist,
+  Show,
+  Track,
+} from "@spotify/web-api-ts-sdk";
+
 export type MemeInput = {
   template_id: number;
   username: string;
@@ -72,3 +83,14 @@ type IntRange<F extends number, T extends number> = Exclude<
 >;
 
 export type Limit = IntRange<0, 50>;
+
+export type SearchKeys = keyof PartialSearchResult;
+export type SearchRes = {
+  tracks?: Track[];
+  artists?: Artist[];
+  albums?: Album[];
+  playlists?: Playlist[];
+  shows?: Show[];
+  episodes?: Episode[];
+  audiobooks?: Audiobook[];
+};

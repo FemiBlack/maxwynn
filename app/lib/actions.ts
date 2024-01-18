@@ -1,9 +1,10 @@
 "use server";
 
 import sdk from "./sdk";
-import { signIn } from "@/auth";
+import { auth, signIn } from "@/auth";
 import { AuthError } from "next-auth";
 import { Limit, TimeRange } from "./definitions";
+import { ItemTypes } from "@spotify/web-api-ts-sdk";
 
 const client_id = process.env.SPOTIFY_CLIENT_ID;
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
@@ -61,6 +62,50 @@ export const getTopArtists = async ({
   timeRange?: TimeRange;
 }) => {
   return sdk.currentUser.topItems("artists", timeRange, limit, offset);
+};
+
+export const getRecommendations = async ({
+  artists,
+  genres,
+  tracks,
+}: {
+  artists?: string[];
+  genres?: string[];
+  tracks?: string[];
+}) => {
+  return sdk.recommendations.get({
+    seed_artists: artists,
+    seed_genres: genres,
+    seed_tracks: tracks,
+  });
+};
+
+export const searchItems = async ({
+  query,
+  types,
+  limit = 5,
+}: {
+  query: string;
+  types: ItemTypes[];
+  limit?: Limit;
+}) => {
+  if (!query) return;
+  return sdk.search(query, types, undefined, limit);
+};
+
+export const createPlaylist = async () => {
+  const session = await auth();
+  if (!session || !session.user) return;
+  return sdk.playlists.createPlaylist(session.user.id, {
+    name: "Max Wynn Recommendations",
+    public: false,
+  });
+};
+
+export const saveAsPlaylist = async (uris: string[]) => {
+  const playlist = await createPlaylist();
+  if (!playlist) return;
+  return sdk.playlists.addItemsToPlaylist(playlist.id, uris);
 };
 
 export async function authenticate() {

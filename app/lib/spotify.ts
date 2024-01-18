@@ -5,6 +5,7 @@ const scope = [
   "user-read-email",
   "user-top-read",
   "user-read-recently-played",
+  "playlist-modify-private",
 ].join(",");
 
 const queryParamsString = new URLSearchParams({
