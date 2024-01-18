@@ -2,12 +2,9 @@ import { auth, signOut } from "@/auth";
 import Image from "next/image";
 import {
   ArrowRightEndOnRectangleIcon,
-  GiftIcon,
   SpeakerWaveIcon,
-  UsersIcon,
 } from "@heroicons/react/24/outline";
-import { MusicalNoteIcon } from "@heroicons/react/24/outline";
-import Link from "next/link";
+import NavLinks from "./nav-links";
 
 export default async function Navbar() {
   const session = await auth();
@@ -45,24 +42,7 @@ export default async function Navbar() {
         </form>
       </div>
       <div className="flex justify-around w-full items-center">
-        <Link
-          href="/dashboard/tracks"
-          className="flex items-center gap-2 p-2 rounded-md mt-2 hover:font-semibold"
-        >
-          <MusicalNoteIcon className="h-5 w-5" />
-          Top Tracks
-        </Link>
-        <Link
-          href="/dashboard/artists"
-          className="flex items-center gap-2 p-2 rounded-md mt-2 hover:font-semibold"
-        >
-          <UsersIcon className="h-5 w-5" />
-          Top Artists
-        </Link>
-        <p className="flex items-center gap-2 p-2 rounded-md mt-2">
-          <GiftIcon className="h-5 w-5" />
-          Recommendations
-        </p>
+        <NavLinks />
       </div>
     </nav>
   );
