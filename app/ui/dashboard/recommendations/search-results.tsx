@@ -23,6 +23,8 @@ export default async function SearchResults({
   query: string;
   types: ItemTypes[];
 }) {
+  console.log("To Fetch=>", types);
+
   const result = await searchItems({ query, types });
 
   return (

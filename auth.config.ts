@@ -46,7 +46,6 @@ export const authConfig = {
     Spotify({
       authorization: LOGIN_URL,
       profile: (profile) => {
-        console.log(profile);
         return {
           id: profile.id,
           name: profile.display_name,
@@ -59,8 +58,6 @@ export const authConfig = {
   session: { maxAge: 60 * 60 },
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
-      console.log("auth=>", auth);
-
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith("/dashboard");
       if (isOnDashboard) {
@@ -72,8 +69,6 @@ export const authConfig = {
       return true;
     },
     async jwt({ token, account }) {
-      console.log("account=>", account);
-
       if (!account) {
         return token;
       }
@@ -96,9 +91,6 @@ export const authConfig = {
       return updatedToken;
     },
     session({ session, token }: { session: any; token: any }) {
-      console.log("token=>", token);
-      console.log("sessure=>", session);
-
       const user: AuthUser = {
         ...session.user,
         access_token: token.access_token,

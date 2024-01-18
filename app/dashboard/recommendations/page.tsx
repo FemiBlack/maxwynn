@@ -6,6 +6,7 @@ import SelectedResults from "@/app/ui/dashboard/recommendations/selected-results
 import { ItemTypes } from "@spotify/web-api-ts-sdk";
 import RecommendationResults from "@/app/ui/dashboard/recommendations/recommendation-results";
 import SavePlaylistButton from "@/app/ui/dashboard/recommendations/save-playlist-button";
+import SearchTypePicker from "@/app/ui/dashboard/recommendations/search-type-picker";
 
 export default async function Page({
   searchParams,
@@ -25,19 +26,16 @@ export default async function Page({
     <div className="mt-8">
       <div className="flex justify-between">
         <h2 className="font-bold text-2xl">Get Recommendations</h2>
-        {/* <div className="flex gap-8">
-          <p>filter</p>
-        </div> */}
       </div>
       <div className="mt-8">
         <div className="grid grid-cols-3 gap-10">
           <Providers>
             <div>
               <p>Search for album, track or genre</p>
+              <SearchTypePicker />
               <Search />
 
               <SearchResults query={query} types={searchTypes} />
-              <p>Scroll in box</p>
             </div>
             <div>
               <div className="flex items-center justify-between">
