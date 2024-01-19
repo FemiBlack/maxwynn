@@ -1,3 +1,5 @@
+"use client";
+
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 const getStorageValue = (key: string, defaultValue?: any) => {
@@ -10,9 +12,13 @@ export const useLocalStorage = <T>(
   key: string,
   defaultValue?: any
 ): [T, Dispatch<SetStateAction<T>>] => {
-  const [value, setValue] = useState<T>(() => {
-    return getStorageValue(key, defaultValue);
-  });
+  const [value, setValue] = useState<T>(defaultValue);
+
+  // Set Value only When Page is fully loaded, SSR quirks
+  useEffect(() => {
+    setValue(getStorageValue(key, value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value));
