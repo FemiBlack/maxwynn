@@ -64,7 +64,7 @@ export default function SearchTypePicker() {
             onClick={() => handleType(type.value)}
             key={type.value}
             className={clsx("rounded-full py-1 px-5 bg-zinc-300 text-sm", {
-              "bg-purple-300": isActive(type.value),
+              "!bg-purple-300": isActive(type.value),
             })}
           >
             <p>{type.name}</p>
