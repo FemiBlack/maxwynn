@@ -1,5 +1,6 @@
 import { Track } from "@spotify/web-api-ts-sdk";
 import Image from "next/image";
+import TrackPlayButton from "./track-play-button";
 
 export default function Track({ track }: { track: Track }) {
   return (
@@ -16,6 +17,7 @@ export default function Track({ track }: { track: Track }) {
         <p className="text-zinc-400 truncate">
           {track.artists.map((a) => a.name).join(", ")}
         </p>
+        <TrackPlayButton url={track.preview_url || ""} />
       </div>
     </article>
   );

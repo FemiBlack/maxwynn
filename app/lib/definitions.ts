@@ -94,3 +94,9 @@ export type SearchRes = {
   episodes?: Episode[];
   audiobooks?: Audiobook[];
 };
+
+export type CurrentlyPlaying = {
+  url: string;
+  duration?: string;
+  currentTime?: string;
+};

@@ -29,29 +29,27 @@ export default async function Page({
       </div>
       <div className="mt-8">
         <div className="grid grid-cols-3 gap-10">
-          <Providers>
-            <div>
-              <p>Search for album, track or genre</p>
-              <SearchTypePicker />
-              <Search />
+          <div>
+            <p>Search for album, track or genre</p>
+            <SearchTypePicker />
+            <Search />
 
-              <SearchResults query={query} types={searchTypes} />
+            <SearchResults query={query} types={searchTypes} />
+          </div>
+          <div>
+            <div className="flex items-center justify-between">
+              <p>Selected tracks appear here (Max: 5)</p>
+              <GenerateButton />
             </div>
-            <div>
-              <div className="flex items-center justify-between">
-                <p>Selected tracks appear here (Max: 5)</p>
-                <GenerateButton />
-              </div>
-              <SelectedResults />
+            <SelectedResults />
+          </div>
+          <div>
+            <div className="flex items-center justify-between">
+              <p>Generated tracks appear here</p>
+              <SavePlaylistButton />
             </div>
-            <div>
-              <div className="flex items-center justify-between">
-                <p>Generated tracks appear here</p>
-                <SavePlaylistButton />
-              </div>
-              <RecommendationResults />
-            </div>
-          </Providers>
+            <RecommendationResults />
+          </div>
         </div>
       </div>
     </div>

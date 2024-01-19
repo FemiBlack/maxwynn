@@ -6,9 +6,12 @@ import {
   SpeakerWaveIcon,
   SpeakerXMarkIcon,
 } from "@heroicons/react/24/outline";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useLocalStorageContext } from "../lib/contexts/localStorage";
 
 export default function AudioControl() {
+  const { currentlyPlaying } = useLocalStorageContext();
+
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressBarRef = useRef<HTMLProgressElement>(null);
   const [isMuted, setIsMuted] = useState(false);
@@ -86,8 +89,16 @@ export default function AudioControl() {
       audioRef.current.pause();
     }
   };
+  useEffect(() => {
+    if (!audioRef.current) return;
+    // TODO: Fix user permission bug on page load
+    // FIX: don't play music immediately if it's a new page load
+    audioRef.current.src = currentlyPlaying.url;
+    audioRef.current.pause();
+    audioRef.current.play();
+  }, [currentlyPlaying]);
   return (
-    <div className="fixed bottom-5 mx-auto w-full animate-slide-from-bottom">
+    <div className="fixed left-0 bottom-5 mx-auto w-full animate-slide-from-bottom">
       <div className="mx-auto w-1/3 p-5 bg-zinc-300 rounded-lg flex items-center gap-3">
         <button onClick={toggleMute}>
           {isMuted ? (

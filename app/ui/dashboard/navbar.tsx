@@ -1,10 +1,8 @@
 import { auth, signOut } from "@/auth";
 import Image from "next/image";
-import {
-  ArrowRightEndOnRectangleIcon,
-  SpeakerWaveIcon,
-} from "@heroicons/react/24/outline";
+import { ArrowRightEndOnRectangleIcon } from "@heroicons/react/24/outline";
 import NavLinks from "./nav-links";
+import MaxWynnPlayButton from "./max-wynn-button";
 
 export default async function Navbar() {
   const session = await auth();
@@ -19,9 +17,7 @@ export default async function Navbar() {
         priority
       />
       <div className="p-3 bg-zinc-300 rounded-md flex items-center gap-4 mt-3">
-        <button className="rounded-full bg-zinc-900 h-8 w-8 flex justify-center items-center">
-          <SpeakerWaveIcon className="h-5 w-5 text-gray-100" />
-        </button>
+        <MaxWynnPlayButton />
         <p>
           Logged in as{" "}
           <span className="font-medium">{session?.user?.name} </span>

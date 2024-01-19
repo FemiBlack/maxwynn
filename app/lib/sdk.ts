@@ -30,7 +30,6 @@ class NextAuthStrategy implements IAuthStrategy {
 
     const { user }: { user: AuthUser } = session;
 
-    console.log("i returned back=>", session);
     return {
       access_token: user.access_token,
       token_type: "Bearer",
